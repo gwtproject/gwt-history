@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.gwtproject.user.history</groupId>
+  <artifactId>gwt-history-parent</artifactId>
+
+  <version>HEAD-SNAPSHOT</version>
+
+  <packaging>pom</packaging>
+
+  <name>GWT History Parent</name>
+  <description>Parent POM containing the gwt-history module and the test modules (gwt2-tests and j2cl-tests)</description>
+  <url>https://github.com/gwtproject/gwt-history</url>
+
+  <organization>
+    <name>The GWT Authors</name>
+    <url>https://github.com/gwtproject</url>
+  </organization>
+
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>The GWT Authors</name>
+      <organization>The GWT Project Authors</organization>
+      <url>https://github.com/gwtproject</url>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:git://github.com/gwtproject/gwt-history.git</connection>
+    <developerConnection>scm:git:ssh://github.com/gwtproject/gwt-history.git</developerConnection>
+    <url>https://github.com/gwtproject/gwt-history/tree/master</url>
+  </scm>
+
+  <inceptionYear>2019</inceptionYear>
+
+  <modules>
+    <module>gwt-history</module>
+    <module>gwt-history-gwt2-tests</module>
+    <module>gwt-history-j2cl-tests</module>
+  </modules>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <maven.deploy.plugin>3.0.0-M1</maven.deploy.plugin>
+    <maven.fmt.plugin>2.5.1</maven.fmt.plugin>
+    <maven.licence.plugin>3.0</maven.licence.plugin>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.gwtproject.user.history</groupId>
+      <artifactId>gwt-history</artifactId>
+      <version>${project.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.coveo</groupId>
+        <artifactId>fmt-maven-plugin</artifactId>
+        <version>${maven.fmt.plugin}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <version>${maven.deploy.plugin}</version>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+    </plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>com.mycila</groupId>
+          <artifactId>license-maven-plugin</artifactId>
+          <version>${maven.licence.plugin}</version>
+          <configuration>
+            <header>LICENSE.header</header>
+            <encoding>${project.build.sourceEncoding}</encoding>
+            <skipExistingHeaders>true</skipExistingHeaders>
+            <mapping>
+              <java>SLASHSTAR_STYLE</java>
+            </mapping>
+            <includes>
+              <include>sec/test/java</include>
+            </includes>
+            <properties>
+              <year>${project.inceptionYear}</year>
+              <name>${project.organization.name}</name>
+            </properties>
+          </configuration>
+          <executions>
+            <execution>
+              <goals>
+                <goal>check</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>
